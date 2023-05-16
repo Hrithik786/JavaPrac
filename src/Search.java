@@ -13,7 +13,7 @@ class Search {
                 }
                 if (target > arr[mid])
                     left = mid+1;
-                else
+                else if (target < arr[mid])
                     right = mid-1;
             }
             System.out.println("Occurance: "+count);
