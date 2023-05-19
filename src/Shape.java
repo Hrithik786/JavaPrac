@@ -1,9 +1,9 @@
 interface Shape {
-    String getName();
-    double area();
+    public abstract String getName();
+    public abstract double area();
 }
 class Circle implements Shape{
-    int rad;
+    private int rad;
     public Circle(int rad) {
         this.rad = rad;
     }
@@ -15,7 +15,7 @@ class Circle implements Shape{
     }
 }
 class Rectangle implements Shape{
-    int l,b;
+    private int l,b;
     public Rectangle(int l,int b) {
         this.l = l;
         this.b = b;

@@ -1,10 +1,7 @@
-import com.sun.security.jgss.GSSUtil;
-
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 class Search {
-    public static final int binarySearch(int[] arr,int target){
+    public static  int binarySearch(int[] arr,int target){
             //The Condition of Binary is The Array always remains Sorted
             int left = 0 , right = arr.length-1;
             int mid;
@@ -26,7 +23,7 @@ class Search {
     }
 }
 class Sorting{
-    public static final void bubbleSort(int[] arr){
+    public static void bubbleSort(int[] arr){
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr.length-1-i; j++) {
                 if (arr[j] > arr[j+1]){
@@ -37,7 +34,7 @@ class Sorting{
             }
          }
     }
-    public static final void selectionSort(int[] arr){
+    public static void selectionSort(int[] arr){
         int min;
         for (int i = 0; i < arr.length-1; i++) {
             min = i;
@@ -52,7 +49,7 @@ class Sorting{
             }
         }
     }
-    public static final void insertionSort(int[] arr){
+    public static void insertionSort(int[] arr){
         for (int i = 0; i < arr.length-1; i++) {
             for (int j = i+1; j > 0; j--) {
                 if (arr[j] < arr[j-1]){
