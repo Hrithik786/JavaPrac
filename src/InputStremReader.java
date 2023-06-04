@@ -1,9 +1,8 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.nio.Buffer;
 
-public class isr {
+public class InputStremReader {
     public static void main(String[] args) throws IOException { //it's  Efficient than Scanner Class
         System.out.println("plz enter value: ");
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
