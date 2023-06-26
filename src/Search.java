@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 class Search {
     public static  int binarySearch(int[] arr,int target){
             //The Condition of Binary is The Array always remains Sorted
@@ -15,8 +13,7 @@ class Search {
                 }
                 if (target > arr[mid])
                     left = mid+1;
-                else if (target < arr[mid])
-                    right = mid-1;
+                else right = mid-1;
             }
             System.out.println("Occurance: "+count);
             return -1;
@@ -42,7 +39,7 @@ class Sorting{
                 if (arr[j] < arr[min])
                     min=j;
             }
-            if (min!=i){
+            if (min!=i){        //preventing from unnecessary swapping
                 int temp=arr[i];
                 arr[i] = arr[min];
                 arr[min]=temp;
@@ -62,17 +59,60 @@ class Sorting{
             }
         }
     }
+    public static void mergeSort(int[] arr, int start, int end){
+
+        if ( start < end ){
+            int mid = (start+end)/2;      //  (log n)
+
+            mergeSort(arr, start, mid);   //half left array
+            mergeSort(arr,mid+1,end);   //half right array
+            merge(arr,start,end);
+        }
+    }
+    public static void merge(int[] arr, int start, int end){
+        int mid = (start + end)/2;
+        int first = start;
+        int sec = mid+1;
+
+        int pos = 0;
+        int[] brr = new int[end-start+1];
+
+        while (first <= mid && sec <= end){
+
+            if (arr[first] <= arr[sec]){
+                brr[pos] = arr[first];
+                first++;
+            }else {
+                brr[pos]=arr[sec];
+                sec++;
+            }
+            pos++;
+        }
+        while (first <= mid){
+            brr[pos] = arr[first];
+            first++;
+            pos++;
+        }
+        while (sec <= end){
+            brr[pos] = arr[sec];
+            sec++;
+            pos++;
+        }
+        for (int j = 0, k = start ; j < brr.length; j++,k++) {
+            arr[k] = brr[j];
+        }
+    }
 }
 class UseSearch{
     public static void main(String[] args) {
 
-        int[] arr = new int[5000000];
+        int[] arr = new int[502500];
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = arr.length-i;
+            arr[i] = arr.length-i;  //init in reverse order for testing
         }
-        System.out.println(Arrays.toString(arr));
-        Sorting.insertionSort(arr);
-        System.out.println(Arrays.toString(arr));
-        System.out.println(Search.binarySearch(arr,45000));
+        Sorting.mergeSort(arr,0, arr.length-1);
+        for (int data : arr) {
+            System.out.println(data);
+        }
     }
-    }
+}
